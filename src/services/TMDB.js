@@ -60,7 +60,7 @@ export const tmdbApi = createApi({
 
     // Get actor starred movies
     getMoviesByActorId : builder.query({
-      query : (id, page) => `/discover/movie?with_cast=${id}&page=${page}&api_key=${tmdbApiKey}`,
+      query : ({id, page}) => `/discover/movie?with_cast=${id}&page=${page}&api_key=${tmdbApiKey}`,
     })
   }),
 });
