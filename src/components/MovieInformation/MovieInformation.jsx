@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   Typography,
@@ -37,6 +37,7 @@ const MovieInformation = () => {
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
 
   const { data: recommendations, isFetching: isRecommendationsFteching } =
     useGetRecommendationsQuery({ list: "/recommendations", movie_id: id });
@@ -158,7 +159,7 @@ const MovieInformation = () => {
         <Grid item container style={{ marginTop: "2rem" }}>
           <div className={classes.buttonsContainer}>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size="medium" variant="outlined">
+              <ButtonGroup size="small" variant="outlined">
                 <Button
                   target="_blank"
                   rel="noopener noreferrer"
@@ -175,13 +176,17 @@ const MovieInformation = () => {
                 >
                   IMDB
                 </Button>
-                <Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+                <Button
+                  onClick={() => setOpen(true)}
+                  href="#"
+                  endIcon={<Theaters />}
+                >
                   Trailer
                 </Button>
               </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size="medium" variant="outlined">
+              <ButtonGroup size="small" variant="outlined">
                 <Button
                   onClick={addToFavourites}
                   endIcon={
@@ -226,11 +231,29 @@ const MovieInformation = () => {
         </Typography>
         {/* loop through the recommended movies */}
         {recommendations ? (
-          <MovieList movies={recommendations} numberOfMovies={12}/>
+          <MovieList movies={recommendations} numberOfMovies={12} />
         ) : (
           <Box>Sorry, nothing was found</Box>
         )}
       </Box>
+      {/* {console.log(data.videos.results[0].key)} */}
+      <Modal
+        closedAfterTransition
+        className={classes.modal}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        {data?.videos?.results?.length > 0 && (
+          <iframe
+            autoplay
+            className={classes.video}
+            frameBorder="0"
+            title="Trailer"
+            src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
+            allow="autoplay"
+          />
+        )}
+      </Modal>
     </Grid>
   );
 };

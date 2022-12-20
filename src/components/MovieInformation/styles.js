@@ -54,7 +54,7 @@ export default makeStyles((theme) => ({
       },
       buttonsContainer: {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         width: '100%',
         [theme.breakpoints.down('sm')]: {
           flexDirection: 'column',
@@ -70,7 +70,7 @@ export default makeStyles((theme) => ({
         height: '50%',
         [theme.breakpoints.down('sm')]: {
           width: '90%',
-          height: '90%',
+          height: '60%',
         },
       },
 }));
