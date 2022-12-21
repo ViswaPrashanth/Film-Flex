@@ -39,7 +39,7 @@ const Profile = () => {
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h5" sx={{color: "#1976d2"}} gutterBottom>
           My Profile
         </Typography>
         <Button color="inherit" onClick={logout}>
@@ -48,7 +48,7 @@ const Profile = () => {
       </Box>
       {!favouriteMovies?.results?.length &&
       !watchlistMovies?.results?.length ? (
-        <Typography variant="h5">
+        <Typography variant="h6">
           Add favourites or watchlist some movies to see them here!
         </Typography>
       ) : (
