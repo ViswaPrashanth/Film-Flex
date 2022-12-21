@@ -18,9 +18,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 
 const redLogo =
-  "https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png";
+  "https://fontmeme.com/permalink/221221/552ad8f2f0f795db54bfd54e631ba4bc.png";
 const blueLogo =
-  "https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png";
+  "https://fontmeme.com/permalink/221221/b4b90076e3c06869eef8708ec77e9529.png";
 
 const categories = [
   { label: "Popular", value: "popular" },
@@ -50,7 +50,7 @@ const Sidebar = ({ setMobileOpen }) => {
       <Link to="/" className={classes.imageLink}>
         <img
           className={classes.image}
-          src={theme.palette.mode === "light" ? redLogo : blueLogo}
+          src={theme.palette.mode === "light" ? blueLogo : redLogo}
           alt="FilmFlex Logo"
         />
       </Link>
@@ -66,7 +66,7 @@ const Sidebar = ({ setMobileOpen }) => {
               <ListItemIcon>
                 <img
                   src={genreIcons[label.toLowerCase()]}
-                  className={classes.genreImages}
+                  className={classes.genreImage}
                   height={30}
                 />
               </ListItemIcon>
@@ -92,7 +92,7 @@ const Sidebar = ({ setMobileOpen }) => {
                 <ListItemIcon>
                   <img
                     src={genreIcons[name.toLowerCase()]}
-                    className={classes.genreImages}
+                    className={classes.genreImage}
                     height={30}
                   />
                 </ListItemIcon>
